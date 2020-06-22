@@ -2,9 +2,13 @@
 
 var array=[];
 var totalClicks=0;
+
+var sectionimge =document.getElementById('yes');
 var leftImage=document.getElementById('left_img');
 var rightImage=document.getElementById('right_img');
 var middleImage=document.getElementById('middle_img');
+var result=document.getElementById('finalResult');
+
 var previosLeftImageIndex;
 var previosMiddleImageIndex;
 var previosrightImageIndex; 
@@ -13,7 +17,6 @@ var currentLeftImage;
 var currentrightImage;
 var currentmiddleImage;
 
-var sectionimge =document.getElementById('yes');
 
 function Pictures(name,url){
     this.name =name ;
@@ -93,7 +96,8 @@ function generateaRandomNumber(forbiddenIndex){
    
 }
 
-sectionimge.addEventListner('click',handelClick)
+
+sectionimge.addEventListener('click',handelClick);
 
 function handelClick(event){
     var clickedElement =event.target;
@@ -109,5 +113,14 @@ if(clickedElementId==='left_img'){
 }
 displayRandomImages();
 }
+
+else{
+
+
+    for (var i=0; i<array.length;i++){
+        var listItem=document.createElement('li')
+        listItem.textContent=array[i].name + 'has a' + array[i].numberOfClicks + 'Clicks ,and' + array[i].timesShown + 'Times Shown';
+    result.appendChild(listItem);
+    }
+    }
 }
-handelClick();
