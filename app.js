@@ -100,7 +100,7 @@ function generateaRandomNumber(forbiddenIndex){
 sectionimge.addEventListener('click',handelClick);
 
 function handelClick(event){  if (totalClicks<25){
-    
+
     var clickedElement =event.target;
     var clickedElementId=clickedElement.id;
   
@@ -117,12 +117,12 @@ displayRandomImages();
 }
 }
 else{
-
-
     for (var i=0; i<array.length;i++){
         var listItem=document.createElement('li')
         listItem.textContent=array[i].name + 'has a' + array[i].numberOfClicks + 'Clicks ,and' + array[i].timesShown + 'Times Shown';
     result.appendChild(listItem);
     }
     }
+    sectionimge.removeEventListener('click', handleClick);
+
 }
