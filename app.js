@@ -99,9 +99,11 @@ function generateaRandomNumber(forbiddenIndex){
 
 sectionimge.addEventListener('click',handelClick);
 
-function handelClick(event){
+function handelClick(event){  if (totalClicks<25){
+    
     var clickedElement =event.target;
     var clickedElementId=clickedElement.id;
+  
     if(clickedElementId === 'left_img'|| clickedElementId === 'right_img' || clickedElementId === 'middle_img') 
 {totalClicks++;
 if(clickedElementId==='left_img'){
@@ -113,7 +115,7 @@ if(clickedElementId==='left_img'){
 }
 displayRandomImages();
 }
-
+}
 else{
 
 
