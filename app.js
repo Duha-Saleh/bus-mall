@@ -122,7 +122,8 @@ else{
         listItem.textContent=array[i].name + 'has a' + array[i].numberOfClicks + 'Clicks ,and' + array[i].timesShown + 'Times Shown';
     result.appendChild(listItem);
     }
+    sectionimge.removeEventListener('click', handelClick)
+
     }
-    sectionimge.removeEventListener('click', handleClick);
 
 }
