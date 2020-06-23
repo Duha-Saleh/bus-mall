@@ -2,9 +2,13 @@
 
 var array=[];
 var totalClicks=0;
+
+var sectionimge =document.getElementById('yes');
 var leftImage=document.getElementById('left_img');
 var rightImage=document.getElementById('right_img');
 var middleImage=document.getElementById('middle_img');
+var result=document.getElementById('finalResult');
+
 var previosLeftImageIndex;
 var previosMiddleImageIndex;
 var previosrightImageIndex; 
@@ -13,7 +17,7 @@ var currentLeftImage;
 var currentrightImage;
 var currentmiddleImage;
 
-var sectionimge =document.getElementById('yes');
+var productName =[];
 
 function Pictures(name,url){
     this.name =name ;
@@ -21,6 +25,8 @@ function Pictures(name,url){
     this.numberOfClicks=0;
     this.timesShown=0;
     array.push(this);
+    productName.push(this.name);
+
 }
 new Pictures ('bag','assets/bag.jpg');
 new Pictures ('banana','assets/banana.jpg');
@@ -93,11 +99,14 @@ function generateaRandomNumber(forbiddenIndex){
    
 }
 
-sectionimge.addEventListner('click',handelClick)
 
-function handelClick(event){
+sectionimge.addEventListener('click',handelClick);
+
+function handelClick(event){  if (totalClicks<25){
+
     var clickedElement =event.target;
     var clickedElementId=clickedElement.id;
+  
     if(clickedElementId === 'left_img'|| clickedElementId === 'right_img' || clickedElementId === 'middle_img') 
 {totalClicks++;
 if(clickedElementId==='left_img'){
@@ -110,4 +119,65 @@ if(clickedElementId==='left_img'){
 displayRandomImages();
 }
 }
-handelClick();
+else{
+//     for (var i=0; i<array.length;i++){
+//         var listItem=document.createElement('li')
+//         listItem.textContent=array[i].name + ' : has a ' + array[i].numberOfClicks + ' Clicks ,and ' + array[i].timesShown + ' Times Shown';
+//     result.appendChild(listItem);
+//     }
+drawChart();
+    sectionimge.removeEventListener('click', handelClick)
+
+   
+
+}}
+
+function drawChart() {
+
+    var allClicks = [];
+    var allShown = [];
+
+    for (var i = 0; i < array.length; i++) {
+        allClicks.push(array[i].numberOfClicks);
+    }
+
+    for (var j = 0; j < array.length; j++) {
+        allShown.push(array[j].timeShown);
+    }
+
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: productName,
+            datasets: [{
+                    label: '# of Clicks',
+                    data: allClicks,
+                    backgroundColor: 'rgba(ddd)',
+                    borderColor: '#f4ebc1',
+                    borderWidth: 1
+                },
+                {
+                    label: '# of Shows',
+                    data: allShown,
+                    backgroundColor: '#ff7f50',
+                    borderColor: 'rgb(0, 0, 0)',
+                    borderWidth: 0.5
+                }
+            ]
+            
+  
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }]
+            }
+        }
+    });
+}
+
