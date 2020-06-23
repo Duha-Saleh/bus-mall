@@ -3,7 +3,7 @@ html{
     background-repeat: no-repeat; 
     background-size: cover;
     background-position: center center; */
-    background-image: url("assets/family.jpg");
+    /* background-image: url("assets/family.jpg"); */
     background-color: rgba(255, 255, 255, 0.5);
     background-blend-mode: lighten;
     
@@ -46,6 +46,7 @@ table{
     width: 25%;
     height:500px;
     font-weight: 600;
+  
 }
 .yeees{
     backdrop-filter: blur(10px);
@@ -67,3 +68,8 @@ table{
 }
 
 
+canvas {
+    width: 800px!important;
+    height: 500px!important;
+    margin: auto;
+}
