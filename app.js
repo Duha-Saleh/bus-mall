@@ -110,11 +110,22 @@ function handelClick(event){  if (totalClicks<25){
     if(clickedElementId === 'left_img'|| clickedElementId === 'right_img' || clickedElementId === 'middle_img') 
 {totalClicks++;
 if(clickedElementId==='left_img'){
-    currentLeftImage.numberOfClicks+=1;}
+    currentLeftImage.numberOfClicks = Number(localStorage.getItem(currentLeftImage.name));
+    currentLeftImage.numberOfClicks+=1;
+    localStorage.setItem(currentLeftImage.name, currentLeftImage.numberOfClicks);
+}
     if(clickedElementId==='right_img'){
-        currentrightImage.numberOfClicks+=1;}
+        currentrightImage.numberOfClicks+=1;
+        currentrightImage.numberOfClicks = Number(localStorage.getItem(currentrightImage.name));
+        localStorage.setItem(currentrightImage.name, currentrightImage.numberOfClicks);
+
+    }
         if(clickedElementId==='middle_img'){
             currentmiddleImage.numberOfClicks+=1;
+            currentmiddleImage.numberOfClicks = Number(localStorage.getItem(currentmiddleImage.name));
+            localStorage.setItem(currentmiddleImage.name, currentmiddleImage.numberOfClicks);
+
+
 }
 displayRandomImages();
 }
@@ -126,7 +137,13 @@ else{
 //     result.appendChild(listItem);
 //     }
 drawChart();
-    sectionimge.removeEventListener('click', handelClick)
+sectionimge.removeEventListener('click', handelClick)
+
+  
+    localStorage.setItem('Products', JSON.stringify(array));
+        console.log(JSON.parse(localStorage.getItem('Products')));
+
+        array = JSON.parse(localStorage.getItem('Products'));
 
    
 
@@ -142,7 +159,7 @@ function drawChart() {
     }
 
     for (var j = 0; j < array.length; j++) {
-        allShown.push(array[j].timeShown);
+        allShown.push(array[j].timesShown);
     }
 
     var ctx = document.getElementById('myChart');
@@ -161,8 +178,8 @@ function drawChart() {
                     label: '# of Shows',
                     data: allShown,
                     backgroundColor: '#ff7f50',
-                    borderColor: 'rgb(0, 0, 0)',
-                    borderWidth: 0.5
+                    borderColor: '#0000ff',
+                    borderWidth: 1
                 }
             ]
             
@@ -179,5 +196,26 @@ function drawChart() {
             }
         }
     });
+}
+
+
+function buatJson() {
+    var el_up = document.getElementById("GFG_UP"); 
+        var el_down = document.getElementById("GFG_DOWN"); 
+        var obj = { 
+            "a": { 
+                "a_1": "val_11", 
+                "a_12": "val_12" 
+            }, 
+            "a_2": "val_2", 
+            "a_3": "val_3" 
+        }; 
+      
+        // el_up.innerHTML = JSON.stringify(obj); 
+  
+        // function gfg_Run() { 
+        //     el_down.innerHTML = JSON.stringify(obj, undefined, 4); 
+        // } 
+
 }
 
