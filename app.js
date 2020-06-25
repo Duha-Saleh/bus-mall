@@ -142,7 +142,7 @@ function drawChart() {
     }
 
     for (var j = 0; j < array.length; j++) {
-        allShown.push(array[j].timeShown);
+        allShown.push(array[j].timesShown);
     }
 
     var ctx = document.getElementById('myChart');
