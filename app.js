@@ -131,11 +131,11 @@ displayRandomImages();
 }
 }
 else{
-//     for (var i=0; i<array.length;i++){
-//         var listItem=document.createElement('li')
-//         listItem.textContent=array[i].name + ' : has a ' + array[i].numberOfClicks + ' Clicks ,and ' + array[i].timesShown + ' Times Shown';
-//     result.appendChild(listItem);
-//     }
+    for (var i=0; i<array.length;i++){
+        var listItem=document.createElement('li')
+        listItem.textContent=array[i].name + ' : has a ' + array[i].numberOfClicks + ' Clicks ,and ' + array[i].timesShown + ' Times Shown';
+    result.appendChild(listItem);
+    }
 drawChart();
 sectionimge.removeEventListener('click', handelClick)
 
